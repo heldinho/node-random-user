@@ -1,10 +1,12 @@
 const axios = require('axios')
 
-const url = 'https://randomuser.me/api/'
+const request = axios.create({
+  baseUrl: 'https://randomuser.me/api/'
+})
 
 async function getRandomUserData() {
   try {
-    const response = await axios.get(url)
+    const response = await request.get()
     const userData = response.data.results[0]
     const user = {
       nome: `${userData.name.first} ${userData.name.last}`,
